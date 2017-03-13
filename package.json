@@ -1,0 +1,20 @@
+{
+  "name": "db-study-express",
+  "version": "0.0.1",
+  "description": "The study of database operations using the tool of Expess.js",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.2"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.0",
+    "babel-core": "^6.24.0",
+    "babel-preset-es2015": "^6.24.0",
+    "mysql": "^2.13.0"
+  }
+}
