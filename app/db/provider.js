@@ -1,4 +1,5 @@
 import Logger from "../utils/log";
+import assert from "assert";
 
 export default class Provider {
 
