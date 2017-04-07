@@ -25,8 +25,12 @@ let Providers = {
 }
 
 
-let Tests = {
+let Tests = [
 
+]
+
+let Site = {
+  port: 3000,
 }
 
-export {DBInfo, Providers, Tests};
+export {DBInfo, Providers, Tests, Site};
