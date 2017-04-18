@@ -40,6 +40,7 @@ class Suite {
 
     this.app.listen(this.site.port, ()=> {
       Logger.console('[Suite] server listening at port:', this.site.port);
+      Logger.console('[Suite] Press Ctrl+C to stop server.');
     });
   }
 

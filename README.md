@@ -15,3 +15,7 @@ $ babel-node app.js
 $ vi app/config.js
 
 ```
+
+### Requirements
+
+NodeJS v6+

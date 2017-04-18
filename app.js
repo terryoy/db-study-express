@@ -1,4 +1,3 @@
-import "babel-polyfill";
 import {Providers, Tests, Site} from "./app/config";
 import {Suite} from "./app/suite";
 

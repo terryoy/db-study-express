@@ -1,7 +1,6 @@
 import MysqlProvider from "./db/mysql";
 import RedisProvider from "./db/redis";
-
-
+import {loadTests} from "./utils/test";
 
 let DBInfo = {
   mysql: {
@@ -25,9 +24,8 @@ let Providers = {
 }
 
 
-let Tests = [
+let Tests = loadTests("./tests");
 
-]
 
 let Site = {
   port: 3000,
