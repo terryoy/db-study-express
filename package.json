@@ -4,13 +4,15 @@
   "description": "The study of database operations using the tool of Expess.js",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "DEBUG=*,-babel babel-node app.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "cli-table": "^0.3.1",
     "colors": "^1.1.2",
-    "express": "^4.15.2"
+    "express": "^4.15.2",
+    "glob": "^7.1.1"
   },
   "devDependencies": {
     "babel-cli": "^6.24.0",

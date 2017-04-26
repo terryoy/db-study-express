@@ -5,11 +5,8 @@
 # install dependencies
 $ npm install
 
-# Get environment executables
-$ source environment.sh
-
 # Execute the test suite
-$ babel-node app.js
+$ npm start
 
 # Modify configurations
 $ vi app/config.js

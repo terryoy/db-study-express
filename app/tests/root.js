@@ -1,24 +1,17 @@
-import {ExpressTestCase} from "./utils/test";
-import {Console} from "./utils/log";
+import {ExpressTestCase} from "../utils/test";
+import {Console} from "../utils/log";
 
-export default class extends ExpressTestCase {
+export default class Root extends ExpressTestCase {
   
-  /* initialize url mappings */ 
-  addUrls(app) {
-    this.getUrlMappings().forEach((route)=> {
-      let [method, url, handler] = route;
-      app[method](url, handler);
-    });  
-  }
-
   getUrlMappings() {
     return [
       ['get', "/", this.test_root], 
     ]
   }
 
-  test_root=(request)=> {
+  test_root=(req, res)=> {
     Console.success("You got root! '/'");
+    res.send('DB Study Express!');
   }
 
-});
+};

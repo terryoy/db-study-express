@@ -1,12 +1,14 @@
+import path from "path";
 import MysqlProvider from "./db/mysql";
 import RedisProvider from "./db/redis";
 import {loadTests} from "./utils/test";
+import Logger from "./utils/log";
 
 let DBInfo = {
   mysql: {
     // reference: https://github.com/mysqljs/mysql#connection-options
     host: "localhost",
-    port: "13306",
+    port: "12306", //"13306",
     user: "expressjs",
     password: "welcome1",
     database: "expressjs",
@@ -24,7 +26,7 @@ let Providers = {
 }
 
 
-let Tests = loadTests("./tests");
+let Tests = loadTests(path.dirname(module.filename) + "/tests");
 
 
 let Site = {

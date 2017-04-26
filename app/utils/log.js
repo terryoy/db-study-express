@@ -1,6 +1,9 @@
 import colors from "colors/safe";
 
 const Logger = {
+  debug: function(...props) {
+    this.log(...props);
+  },
   log: function() {
     var args = Array.prototype.slice.call(arguments);
     console.log.apply(console, args);

@@ -15,7 +15,7 @@ class Suite {
 
   setup() {
     let dbnames = this._getPropNames(this.providers).join(", ");
-    let testNames = this._getPropNames(this.tests).join(", ");
+    let testNames = this.tests.map(t=>t.constructor.name).join(", ");
 
     Logger.console('[Suite] Test Suite initialize:');
     Logger.console('[Suite] DB providers:', dbnames);
