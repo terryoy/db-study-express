@@ -13,6 +13,7 @@ export default class MysqlProvider extends Provider {
 
   init() {
     this.conn = mysql.createConnection(this.options);
+    this.conn.on('error', this.handleMysqlError);
     this.connect();
     this.loaded = true;
   }
@@ -26,7 +27,18 @@ export default class MysqlProvider extends Provider {
 
       Logger.log('[MysqlProvider] connected.');
       this.connected = true;
+      this.setKeepConnection();
     });
+  }
+
+  setKeepConnection() {
+    this.keepInterval = setInterval(() => {
+      this.conn.query('select 1');
+    }, 5000);
+  }
+  
+  clearKeepConnection() {
+    this.keepInterval && clearInterval(this.keepInterval);
   }
 
   getConnection() {
@@ -38,7 +50,17 @@ export default class MysqlProvider extends Provider {
   }
 
   destroy() {
+    this.clearKeepConnection();
     this.conn && this.conn.end();
   }
 
+
+  handleMysqlError = (err) => {
+    Logger.error('db error', err);
+    if(err.code === 'PROTOCOL_CONNECTION_LOST') { // Connection to the MySQL server is usually
+      this.connected = false;
+      this.clearKeepConnection();
+      this.init();                // lost due to either server restart, or a
+    }
+  }
 }

@@ -21,6 +21,12 @@ class Suite {
     Logger.console('[Suite] DB providers:', dbnames);
     Logger.console('[Suite] Test suites: [' + testNames + "]");
 
+    this.app.set('views', this.site.views);
+    this.app.set('view engine', 'pug');
+
+    Object.values(this.providers).forEach((p) => {
+      p.init();
+    });
   }
 
   _getPropNames(obj) {
@@ -35,6 +41,7 @@ class Suite {
 
   run() {
     this.tests.forEach((test)=> {
+      test.setProviders(this.providers);
       test.addUrls(this.app);
     });
 

@@ -1,0 +1,17 @@
+html
+
+body
+
+  h2 List of Database Providers
+
+  each db, name in providers
+    
+    h3= name
+
+    ul
+      each value, field in db.options
+        li #{field}: #{value}
+
+      li Connected: #{db.connected}  
+      li 
+        a(href="./db/"+name) Test DB

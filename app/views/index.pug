@@ -1,0 +1,73 @@
+html
+  head
+    style.
+      pre {
+        background: #eee;
+        padding: 15px;
+        border-radius: 5px;
+        margin: 0 10px;
+      }
+
+
+  body
+    h2 DB Express Study!
+
+    p Steps to write your test functions using this framework
+
+    h3 1. Create a TestCase file
+
+    p.
+      You can add your functions inside the test case module. You can use any functions within ExpressJS. Such as URL mappings, request/response handlers, and template engine.
+
+    pre.
+
+      import {ExpressTestCase} from "../utils/test";
+      import {Console} from "../utils/log";
+
+      export default class Root extends ExpressTestCase {
+
+        getUrlMappings() {
+          // Set url routes here
+          return [
+            ['get', "/", this.test_root],
+          ]
+        }
+
+        // a url request handle method 
+        test_root=(req, res)=> {
+          Console.success("You got root! '/'");
+          res.render('index');
+        }
+
+      };
+
+
+    h3 2. Get database connections
+
+    p.
+      You can get connections from different database providers, using the <b>getConnection(dbName)</b> method. Current providers are: mysql, redis, mongodb, etc.
+
+    pre.
+
+        test_mysql = (req, res) => {
+          const conn = this.getConnection('mysql'); // get connection by provider name
+          if (conn) {
+            conn.query('show databases;', (error, result, fields) => {
+              res.render('test_mysql', {
+                error,
+                result,
+                fields,
+              });
+            });
+          } else {
+            res.send('Cannot get database connection!');
+          }
+        }
+
+
+    h3 3. Write an output template
+
+    p.
+      There default PUG(previously Jade) template engine is used here. It is recommended by ExpressJS by default. You can write your views under the <b>./app/views</b> folder.
+
+

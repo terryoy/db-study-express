@@ -30,7 +30,8 @@ let Tests = loadTests(path.dirname(module.filename) + "/tests");
 
 
 let Site = {
-  port: 3000,
+  port: 10001,
+  views: './app/views',
 }
 
 export {DBInfo, Providers, Tests, Site};

@@ -1,0 +1,32 @@
+html
+
+body
+
+  h2 Mysql Test
+
+  if error
+    
+    p= error
+
+  else
+
+    p Schemas:
+    
+    table(style='text-align:left', border=1)
+      thead
+        tr
+        for field in fields
+          th= field.name
+
+      tbody
+
+        if result
+          for row in result
+            tr 
+              for field in fields
+                td= row[field.name]
+        
+        else
+          tr
+            td(colspan=fields.length) 
+

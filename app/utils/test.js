@@ -6,6 +6,11 @@ import Logger, {Console} from "../utils/log";
 
 export class ExpressTestCase {
 
+
+  setProviders(providers) {
+    this.providers = providers;
+  }
+
   /* initialize url mappings */
   addUrls(app) {
     assert(this.getUrlMappings && typeof this.getUrlMappings === 'function', 'getUrlMapping is not defined! ' + this);
@@ -16,7 +21,17 @@ export class ExpressTestCase {
     });
   }
 
+  getConnection(providerName) {
+    const provider = this.providers[providerName];
+    if (provider) {
+      if (!provider.connected) {
+        provider.connect();
+      }
 
+      return provider.getConnection();
+    }
+    return null;
+  }
 }
 
 
