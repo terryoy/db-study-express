@@ -16,11 +16,11 @@ export default class Root extends ExpressTestCase {
   test_root = (req, res) => {
     Console.success("You got root! '/'");
     //res.send('DB Study Express!');
-    res.render('index');
+    res.render('root/index');
   }
 
   test_database = (req, res) => {
-    res.render('database', {
+    res.render('root/database', {
       providers: this.providers,
     });
   }
@@ -30,7 +30,7 @@ export default class Root extends ExpressTestCase {
     const key = 'db-study-express';
     conn.set(key, 'I like to study some database.');
     conn.get(key, (err, value) => {
-      res.render('test_redis', {
+      res.render('root/test_redis', {
         key,
         message: value,
       });
@@ -40,7 +40,7 @@ export default class Root extends ExpressTestCase {
   test_mysql = (req, res) => {
     const conn = this.getConnection('mysql');
     conn.query('show databases;', (error, result, fields) => {
-      res.render('test_mysql', {
+      res.render('root/test_mysql', {
         error,
         result,
         fields,
